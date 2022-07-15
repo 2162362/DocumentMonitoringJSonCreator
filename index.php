@@ -14,5 +14,5 @@
         $('#import').click(function(){ $('#inportfile').trigger('click'); });
         </script>
     </form>
-
+    <script src="index.js" />
 </body>
