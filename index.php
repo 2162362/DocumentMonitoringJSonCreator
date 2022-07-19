@@ -7,7 +7,7 @@
 ?>
 <!DOCTYPE html>
 <body>
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         <input type="file" name="importfile" id="inportfile" onchange="this.form.submit()" accept="application/json" style="display:none"/> 
         <button id="import">Import</button>
         <script>
