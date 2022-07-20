@@ -44,10 +44,10 @@
                     $data = json_decode($json, true);
                     foreach($data as $key => $value){
                      if(!is_array($value)){
-                        echo $key .' => '. $value . '<br/>';
+                        echo '<div>' . $key .' => '. $value . '</div><br/>';
                      } else {
                         foreach ($value as $key => $val) {
-                           echo $key . '=>' . $val . '<br/>';
+                           echo $key . '=>' . $val . '<input type="checkbox"><br/>';
                        }
                      }
                     }
@@ -55,6 +55,5 @@
         ?>
 			
       </form>
-      
    </body>
 </html>
