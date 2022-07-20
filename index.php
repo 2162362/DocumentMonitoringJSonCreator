@@ -40,6 +40,17 @@
                     <li>File size: '. $_FILES['json_file']['size'] .'
                     <li>File type: '. $_FILES['json_file']['type'] .'
                     </ul>';
+                    $json = file_get_contents($_FILES['json_file']['tmp_name']);  
+                    $data = json_decode($json, true);
+                    foreach($data as $key => $value){
+                     if(!is_array($value)){
+                        echo $key .' => '. $value . '<br/>';
+                     } else {
+                        foreach ($value as $key => $val) {
+                           echo $key . '=>' . $val . '<br/>';
+                       }
+                     }
+                    }
             }
         ?>
 			
