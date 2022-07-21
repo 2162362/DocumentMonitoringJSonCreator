@@ -25,6 +25,19 @@
          print_r($errors);
       }
    }
+
+   function print_recursive($arr){
+
+      foreach ($arr as $key => $val) {
+        if (is_array($val)) {
+          print_recursive($val);
+    
+        } else {
+           echo("$key = $val <br/>");
+        }
+      }
+      return;
+   }
 ?>
 <html>
    <body>
@@ -35,22 +48,16 @@
 		<?php
             if(isset($_FILES['json_file'])){
             
-                echo'    <ul>
+               echo'    <ul>
                     <li>Sent file: '. $_FILES['json_file']['name'] .'
                     <li>File size: '. $_FILES['json_file']['size'] .'
                     <li>File type: '. $_FILES['json_file']['type'] .'
                     </ul>';
-                    $json = file_get_contents($_FILES['json_file']['tmp_name']);  
-                    $data = json_decode($json, true);
-                    foreach($data as $key => $value){
-                     if(!is_array($value)){
-                        echo '<div>' . $key .' => '. $value . '</div><br/>';
-                     } else {
-                        foreach ($value as $key => $val) {
-                           echo $key . '=>' . $val . '<input type="checkbox"><br/>';
-                       }
-                     }
-                    }
+                  $json = file_get_contents($_FILES['json_file']['tmp_name']);  
+                  $data = json_decode($json, true);
+                  
+                  print_recursive($data);
+                  //echo "<pre>".$data."<pre/>";
             }
         ?>
 			
